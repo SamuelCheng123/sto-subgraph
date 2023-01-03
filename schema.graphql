@@ -1,0 +1,19 @@
+type Transfer @entity {
+  # Transaction Hash
+  id: ID!
+
+  # Block Number
+  block: BigInt!
+
+  # Token
+  tokenAddress: String!
+
+  # From
+  from: String!
+
+  # To
+  to: String!
+
+  # Amount
+  amount: BigInt!
+}

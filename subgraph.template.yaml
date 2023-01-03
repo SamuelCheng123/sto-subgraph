@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+description: Compliance Subgraph API
+repository: https://github.com/TokenBricks/Tokensbrick-STO
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: mumbai/contract
+    name: UserCompliant
+    network: mumbai
+    source:
+      address: "0x7a770A541642422CA5b0BfD9524d1883C2c7B3d2"
+      abi: UserCompliant
+      startBlock: 30322898
+    mapping:
+      kind: mumbai/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./mapping/transfer.ts
+      entities:
+        - UserCompliant
+      abis:
+        - name: UserCompliant
+          file: ./abis/UserCompliant.json
+      eventHandlers:
+        - event: UpdateTransfer(address,address,address,uint256)
+          handler: handleUpdateTransfer
